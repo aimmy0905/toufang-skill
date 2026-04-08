@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsCreativeAgent",
+    "description": "Generate Google Ads messaging, headlines, descriptions, asset directions, and landing page messaging from strategy inputs.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/creative": {
+      "post": {
+        "operationId": "GoogleAdsCreativePlan",
+        "description": "Generate creative and messaging output for Google Ads campaigns.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreativeInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Creative plan output.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreativeOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreativeInput": {
+        "$ref": "./schemas/creative-input.schema.json"
+      },
+      "CreativeOutput": {
+        "$ref": "./schemas/creative-output.schema.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsAudienceKeywordAgent",
+    "description": "Generate audience segments, search intent structure, keyword themes, match type guidance, and negative keyword recommendations.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/audience-keyword-strategy": {
+      "post": {
+        "operationId": "GoogleAdsAudienceKeywordStrategy",
+        "description": "Create audience and keyword strategy from a campaign brief.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AudienceKeywordInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Audience and keyword strategy output.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceKeywordOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AudienceKeywordInput": {
+        "$ref": "./schemas/audience-keyword-input.schema.json"
+      },
+      "AudienceKeywordOutput": {
+        "$ref": "./schemas/audience-keyword-output.schema.json"
+      }
+    }
+  }
+}

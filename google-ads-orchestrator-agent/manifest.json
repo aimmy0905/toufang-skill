@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsOrchestratorAgent",
+    "description": "Coordinate the full Google Ads workflow across brief, strategy, creative, setup, data, performance, and reporting skills.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/orchestrate": {
+      "post": {
+        "operationId": "GoogleAdsOrchestrate",
+        "description": "Route requests to the correct Google Ads skill sequence and return a stitched response.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrchestratorInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Orchestrated response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrchestratorOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OrchestratorInput": {
+        "$ref": "./schemas/orchestrator-input.schema.json"
+      },
+      "OrchestratorOutput": {
+        "$ref": "./schemas/orchestrator-output.schema.json"
+      }
+    }
+  }
+}

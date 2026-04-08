@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-reporting-agent/reporting-input.schema.json",
+  "title": "ReportingInput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["performanceSnapshot"],
+  "properties": {
+    "performanceSnapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "diagnosisOutput": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "campaignBrief": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

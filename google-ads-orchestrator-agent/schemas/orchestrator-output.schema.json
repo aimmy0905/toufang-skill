@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-orchestrator-agent/orchestrator-output.schema.json",
+  "title": "OrchestratorOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["workflow", "usedSkills", "result"],
+  "properties": {
+    "workflow": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "usedSkills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

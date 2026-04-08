@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-audience-keyword-agent/audience-keyword-input.schema.json",
+  "title": "AudienceKeywordInput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["campaignBrief"],
+  "properties": {
+    "campaignBrief": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "competitorNotes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

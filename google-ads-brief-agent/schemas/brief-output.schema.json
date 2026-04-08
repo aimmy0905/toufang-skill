@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-brief-agent/brief-output.schema.json",
+  "title": "BriefOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["campaignBrief", "goalSummary", "assumptions", "openQuestions"],
+  "properties": {
+    "campaignBrief": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "goalSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["oneLine", "priorities"],
+      "properties": {
+        "oneLine": { "type": "string" },
+        "priorities": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-setup-agent/setup-output.schema.json",
+  "title": "SetupOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["campaignStructure", "budgetPlan", "biddingGuidance", "trackingChecklist"],
+  "properties": {
+    "campaignStructure": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "namingRules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "budgetPlan": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "biddingGuidance": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "trackingChecklist": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

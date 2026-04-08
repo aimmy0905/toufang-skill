@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsPerformanceAgent",
+    "description": "Diagnose Google Ads performance issues and return prioritized optimization actions from normalized performance snapshots.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/performance-diagnosis": {
+      "post": {
+        "operationId": "GoogleAdsPerformanceDiagnosis",
+        "description": "Diagnose performance issues and propose prioritized optimization actions.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PerformanceDiagnosisInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Performance diagnosis output.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceDiagnosisOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PerformanceDiagnosisInput": {
+        "$ref": "./schemas/performance-diagnosis-input.schema.json"
+      },
+      "PerformanceDiagnosisOutput": {
+        "$ref": "./schemas/performance-diagnosis-output.schema.json"
+      }
+    }
+  }
+}

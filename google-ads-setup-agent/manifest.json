@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsSetupAgent",
+    "description": "Translate strategy into a Google Ads setup blueprint including structure, naming, bidding, budget, and tracking checklist.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/setup": {
+      "post": {
+        "operationId": "GoogleAdsSetupBlueprint",
+        "description": "Generate campaign setup blueprint from strategy inputs.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetupInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Campaign setup blueprint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetupOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SetupInput": {
+        "$ref": "./schemas/setup-input.schema.json"
+      },
+      "SetupOutput": {
+        "$ref": "./schemas/setup-output.schema.json"
+      }
+    }
+  }
+}

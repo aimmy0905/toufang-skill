@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-creative-agent/creative-output.schema.json",
+  "title": "CreativeOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["messagingAngles", "searchAds", "extensions", "assetDirections"],
+  "properties": {
+    "messagingAngles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "searchAds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headlines", "descriptions"],
+      "properties": {
+        "headlines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "descriptions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "extensions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "assetDirections": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "landingPageSuggestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

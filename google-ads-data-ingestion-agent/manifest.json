@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsDataIngestionAgent",
+    "description": "Normalize external advertising, analytics, and conversion data into a common performance snapshot for downstream agents.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/data-ingestion": {
+      "post": {
+        "operationId": "GoogleAdsDataIngestion",
+        "description": "Normalize external Google Ads and analytics data into a standard snapshot.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataIngestionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Normalized performance snapshot.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceSnapshot"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DataIngestionInput": {
+        "$ref": "./schemas/data-ingestion-input.schema.json"
+      },
+      "PerformanceSnapshot": {
+        "$ref": "./schemas/performance-snapshot.schema.json"
+      }
+    }
+  }
+}

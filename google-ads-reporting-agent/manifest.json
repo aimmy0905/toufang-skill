@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsReportingAgent",
+    "description": "Generate Google Ads daily reports, weekly summaries, campaign retrospectives, and reusable learnings from normalized performance data.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/reporting": {
+      "post": {
+        "operationId": "GoogleAdsReporting",
+        "description": "Create reporting and retrospective output from performance and diagnosis data.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportingInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reporting output.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportingOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ReportingInput": {
+        "$ref": "./schemas/reporting-input.schema.json"
+      },
+      "ReportingOutput": {
+        "$ref": "./schemas/reporting-output.schema.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-data-ingestion-agent/performance-snapshot.schema.json",
+  "title": "PerformanceSnapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["timeWindow", "accountSummary", "dataQualityFlags"],
+  "properties": {
+    "timeWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startDate", "endDate"],
+      "properties": {
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" }
+      }
+    },
+    "accountSummary": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "campaignMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "keywordMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "searchTermMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "pageMetrics": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "conversionMetrics": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "dataQualityFlags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

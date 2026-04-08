@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-performance-agent/performance-diagnosis-input.schema.json",
+  "title": "PerformanceDiagnosisInput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["performanceSnapshot"],
+  "properties": {
+    "performanceSnapshot": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "strategyContext": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsBriefAgent",
+    "description": "Normalize campaign business inputs into a structured Google Ads brief with priorities, assumptions, and open questions.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/brief": {
+      "post": {
+        "operationId": "GoogleAdsBrief",
+        "description": "Convert raw business and campaign information into a structured campaign brief.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BriefInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Structured campaign brief.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BriefOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BriefInput": {
+        "$ref": "./schemas/brief-input.schema.json"
+      },
+      "BriefOutput": {
+        "$ref": "./schemas/brief-output.schema.json"
+      }
+    }
+  }
+}
