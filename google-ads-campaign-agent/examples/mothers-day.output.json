@@ -1,0 +1,212 @@
+{
+  "goalSummary": {
+    "oneLine": "Drive purchases for a Mother's Day skincare gift set campaign in the US with a $20,000 budget, emphasizing 20% off and on-time delivery.",
+    "context": {
+      "market": "United States (en)",
+      "timeRange": "2026-04-20 to 2026-05-12",
+      "budget": "USD 20,000 total"
+    },
+    "priorities": ["conversions", "roas"],
+    "assumptions": [
+      "Landing page is mobile-friendly and can clearly show discount, shipping cutoff, and trust signals above the fold.",
+      "Inventory can support increased demand during the peak week."
+    ],
+    "openQuestions": [
+      "Do you have best-seller SKUs or bundles that consistently convert better (so we can prioritize them in PMax assets)?",
+      "What is your typical gross margin (rough range) to sanity-check the ROAS target?"
+    ]
+  },
+  "strategyPlan": {
+    "recommendedMix": [
+      {
+        "channel": "search",
+        "why": "Capture high-intent queries like \"Mother's Day gift set\" where users are actively looking to buy.",
+        "when": "Run throughout; increase budgets during peak and final push."
+      },
+      {
+        "channel": "pmax",
+        "why": "Expand reach across Shopping/Display/YouTube with asset-based messaging and let the system find converting audiences.",
+        "when": "Start in warmup to allow learning; keep stable settings during peak."
+      },
+      {
+        "channel": "remarketing",
+        "why": "Bring back visitors who viewed or added to cart but did not purchase, especially near shipping cutoff.",
+        "when": "Always-on; intensify final push with urgency creatives."
+      }
+    ],
+    "budgetAllocation": [
+      { "channel": "search", "percentage": 45, "ruleOfThumb": "Prioritize high-intent demand; scale budget on top converting themes." },
+      { "channel": "pmax", "percentage": 40, "ruleOfThumb": "Give enough budget for learning; keep assets refreshed but avoid frequent resets." },
+      { "channel": "remarketing", "percentage": 15, "ruleOfThumb": "Reserve budget to capture warm audiences and protect efficiency near the deadline." }
+    ],
+    "flightPlan": [
+      {
+        "phase": "warmup",
+        "dateRange": "2026-04-20 to 2026-04-30",
+        "goal": "Collect data and find winning messages/keywords.",
+        "actions": [
+          "Launch Search with core gift + skincare intent themes.",
+          "Launch PMax with 2-3 asset directions (discount, free shipping, gift wrap).",
+          "Set remarketing audiences (viewed, ATC, checkout) and exclusions (purchasers)."
+        ]
+      },
+      {
+        "phase": "peak",
+        "dateRange": "2026-05-01 to 2026-05-07",
+        "goal": "Scale volume while keeping CPA/ROAS within target range.",
+        "actions": [
+          "Shift more budget to top converting Search themes and PMax asset groups.",
+          "Refresh ad copy to emphasize \"20% off\" + \"gift wrap\" benefits.",
+          "Monitor search terms daily and add negatives to avoid low-intent clicks."
+        ]
+      },
+      {
+        "phase": "final_push",
+        "dateRange": "2026-05-08 to 2026-05-12",
+        "goal": "Maximize conversions with urgency and shipping cutoff clarity.",
+        "actions": [
+          "Switch messaging to urgency: \"Arrives before Mother's Day\" and cutoff date.",
+          "Increase remarketing bids/budget for ATC/checkout segments.",
+          "Ensure landing page above-the-fold shows cutoff, delivery promise, and trust badges."
+        ]
+      }
+    ],
+    "keywordDirections": {
+      "themes": ["mother's day gifts", "gifts for mom", "skincare gift set", "last minute mother's day gifts"],
+      "examples": [
+        "mother's day gift sets",
+        "skincare gift set for mom",
+        "gifts for mom free shipping",
+        "mother's day beauty gifts",
+        "last minute mother's day gifts delivery"
+      ],
+      "negativesToConsider": [
+        "free",
+        "diy",
+        "printable",
+        "ideas",
+        "card"
+      ]
+    },
+    "audienceDirections": {
+      "who": ["Gift buyers (family/partners)", "Beauty/skincare shoppers", "Last-minute shoppers near cutoff"],
+      "signals": [
+        "In-market: Beauty & Personal Care",
+        "Custom: users searching Mother's Day gifts + skincare gifts",
+        "Customer list (if available) for suppression and upsell"
+      ],
+      "remarketingWindows": ["ViewContent 7d", "AddToCart 14d", "BeginCheckout 30d"]
+    },
+    "notes": [
+      "CTR 是“看到广告的人里有多少人点了”，像海报吸不吸引人；CTR 低通常要优先改文案/关键词意图或受众。",
+      "如果 CPC 很高但转化不多，常见原因是关键词太泛或落地页说服力不足，需要用否定词+更高意图主题来收紧流量。"
+    ]
+  },
+  "creativePack": {
+    "sellingPoints": ["20% off Mother's Day gift sets", "Free shipping", "Free gift wrap", "Delivery before Mother's Day"],
+    "ctaOptions": [
+      "Shop Mother's Day Gift Sets",
+      "Order Now (Limited Time 20% Off)",
+      "Get Free Gift Wrap Today",
+      "Buy Now for On-Time Delivery",
+      "Send Mom Something Special"
+    ],
+    "searchAds": {
+      "headlines": [
+        "Mother’s Day Skincare Gift Sets",
+        "20% Off Gifts for Mom",
+        "Free Shipping + Gift Wrap",
+        "Order Now for Mother’s Day",
+        "Thoughtful Gifts for Mom",
+        "Premium Skincare Gift Box",
+        "Limited-Time Mother’s Day Sale",
+        "Arrives Before Mother’s Day",
+        "Last-Minute Gifts (Fast Delivery)",
+        "Make Mom Feel Loved Today"
+      ],
+      "descriptions": [
+        "Shop Mother’s Day skincare gift sets with 20% off, free shipping, and free gift wrap. Order early for on-time delivery.",
+        "A premium gift box Mom will love. Limited-time discount, fast shipping, and beautiful gift wrapping included.",
+        "Send a thoughtful skincare gift set with delivery before Mother’s Day. Shop best-sellers and bundles today.",
+        "20% off for a limited time. Free gift wrap and free shipping—perfect for Mother’s Day gifting.",
+        "Order by the cutoff date to arrive before Mother’s Day. Trusted skincare essentials in one gift set."
+      ]
+    },
+    "assetDirections": [
+      "Lifestyle: warm family moment + gift unboxing (premium feel).",
+      "ValueProp: bold \"20% off\" + \"Free gift wrap\" badge in first frame.",
+      "ShippingUrgency: show cutoff date + \"Arrives before Mother's Day\" callout.",
+      "Trust: include reviews/ratings and clean ingredient or dermatologist-tested claims (only if true)."
+    ],
+    "landingPageSuggestions": [
+      "首屏同时展示：20% off + Free shipping + Gift wrap + 截单日期（很醒目）。",
+      "把“节日前送达”做成固定条幅（尤其移动端），减少用户犹豫。",
+      "增加信任信息：评价/退换政策/支付方式/客服入口（不要夸大功效）。"
+    ]
+  },
+  "setupGuide": {
+    "campaignStructure": [
+      "Create 1 Search campaign for high-intent Mother's Day + skincare gift queries; split ad groups by keyword theme (GiftIntent / SkincareGift / ShippingUrgency).",
+      "Create 1 PMax campaign focused on the Mother's Day landing page; split asset groups by message direction (Discount / GiftWrap / ShippingUrgency).",
+      "Create 1 Remarketing campaign (Display/YouTube/Discovery based on what you use) with audiences: ViewContent 7d, ATC 14d, Checkout 30d; exclude Purchasers 180d."
+    ],
+    "namingRules": [
+      "Campaign: US_MD26_Search_NonBrand | US_MD26_PMax | US_MD26_RMKT",
+      "Ad group: GiftIntent | SkincareGift | ShippingUrgency",
+      "Asset group: Discount_20off | GiftWrap | ArriveBeforeMD"
+    ],
+    "biddingAndBudget": [
+      "Warmup: keep budgets stable for 3-5 days to let learning start; avoid frequent edits.",
+      "If you have enough conversion volume, move toward tROAS/tCPA gradually; otherwise start with Max Conversions and tighten traffic with keywords/negatives.",
+      "Allocate daily budgets based on the percentage split; increase budget only after identifying winning segments."
+    ],
+    "trackingChecklist": [
+      "Verify purchase conversion fires once per order (no duplicates).",
+      "Add-to-cart and begin-checkout events are tracked (helps diagnose funnel).",
+      "Use UTMs consistently: utm_source=google&utm_medium=cpc&utm_campaign=US_MD26&utm_content={adgroup_or_asset}&utm_term={keyword}.",
+      "Check GA4: traffic acquisition + landing page report + ecommerce purchase funnel.",
+      "Reconcile: Ads platform conversions vs actual orders (expect differences due to attribution windows)."
+    ]
+  },
+  "optimizationActions": [
+    {
+      "priority": "P0",
+      "action": "Launch Search with the 3 core keyword themes and review search terms daily; add negatives for low-intent traffic (ideas/free/diy).",
+      "expectedImpact": "Reduce wasted spend and improve CPA/ROAS by concentrating on higher-intent queries.",
+      "howToValidate": ["Within 3-5 days, compare CPA/ROAS for cleaned themes vs before negatives.", "Watch CTR and conversion rate trend by theme."],
+      "ownerHint": "ads"
+    },
+    {
+      "priority": "P0",
+      "action": "Update ad copy and landing page hero to clearly show the shipping cutoff date and delivery promise.",
+      "expectedImpact": "Improve conversion rate (CVR) by reducing uncertainty and increasing urgency.",
+      "howToValidate": ["Track CVR on mobile vs desktop after update.", "Monitor bounce rate and begin-checkout rate for the landing page."],
+      "ownerHint": "landing_page"
+    },
+    {
+      "priority": "P1",
+      "action": "Create remarketing audiences (ViewContent 7d, ATC 14d, Checkout 30d) and exclude purchasers; run urgency creatives in final push.",
+      "expectedImpact": "Increase incremental conversions at lower CPA, especially near Mother's Day.",
+      "howToValidate": ["Compare remarketing CPA vs prospecting CPA.", "Check assisted conversions and time-lag to purchase."],
+      "ownerHint": "ads"
+    },
+    {
+      "priority": "P1",
+      "action": "In PMax, maintain stable settings for at least one learning window; iterate assets by message direction (Discount vs GiftWrap vs ShippingUrgency).",
+      "expectedImpact": "Improve efficiency over time by letting the system learn while testing clearer value propositions.",
+      "howToValidate": ["Compare asset group performance after 7-10 days.", "Watch conversion volume and ROAS trend; avoid daily resets."],
+      "ownerHint": "creative"
+    },
+    {
+      "priority": "P2",
+      "action": "Add trust modules: reviews, returns policy, secure checkout badges (only truthful claims) near the CTA on mobile.",
+      "expectedImpact": "Increase CVR by improving confidence and reducing friction.",
+      "howToValidate": ["Monitor begin-checkout and purchase rates.", "Check session recordings/heatmaps if available for friction signals."],
+      "ownerHint": "landing_page"
+    }
+  ],
+  "warnings": [
+    "Avoid exaggerated skincare claims unless you can substantiate them. Keep messaging truthful and compliant."
+  ]
+}
+

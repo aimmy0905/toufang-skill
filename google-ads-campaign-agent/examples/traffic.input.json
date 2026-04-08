@@ -1,0 +1,21 @@
+{
+  "business": {
+    "campaignName": "Summer Blog Traffic Push",
+    "theme": "Content Promotion",
+    "product": {
+      "name": "Travel Accessories Blog",
+      "category": "Content",
+      "priceRange": { "currency": "USD", "min": 0, "max": 0 }
+    },
+    "market": { "country": "Canada", "language": "en" },
+    "timeRange": { "startDate": "2026-06-01", "endDate": "2026-06-30" },
+    "budget": { "currency": "USD", "total": 3000 },
+    "valueProps": ["Free guides", "Packing checklists", "Weekly updates"],
+    "landingPageUrl": "https://example.com/blog/summer-travel-guides"
+  },
+  "goal": {
+    "primaryObjective": "traffic",
+    "conversionAction": "page_view"
+  }
+}
+

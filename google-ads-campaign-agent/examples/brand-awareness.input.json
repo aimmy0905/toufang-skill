@@ -1,0 +1,20 @@
+{
+  "business": {
+    "campaignName": "New Brand Launch Awareness",
+    "theme": "Brand Launch",
+    "product": {
+      "name": "Eco-friendly Water Bottle",
+      "category": "Drinkware",
+      "priceRange": { "currency": "USD", "min": 19, "max": 49 }
+    },
+    "market": { "country": "United States", "language": "en" },
+    "timeRange": { "startDate": "2026-05-01", "endDate": "2026-05-31" },
+    "budget": { "currency": "USD", "total": 8000 },
+    "valueProps": ["BPA-free", "Keeps drinks cold for 24h", "Minimal design", "Recyclable packaging"]
+  },
+  "goal": {
+    "primaryObjective": "brand_awareness",
+    "conversionAction": "visit_landing_page"
+  }
+}
+

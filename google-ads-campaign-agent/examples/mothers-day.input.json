@@ -1,0 +1,29 @@
+{
+  "business": {
+    "campaignName": "Mother's Day Gift Box Campaign",
+    "theme": "Mother's Day",
+    "product": {
+      "name": "Skincare Gift Set",
+      "category": "Skincare",
+      "priceRange": { "currency": "USD", "min": 39, "max": 129 }
+    },
+    "market": { "country": "United States", "language": "en" },
+    "timeRange": { "startDate": "2026-04-20", "endDate": "2026-05-12" },
+    "budget": { "currency": "USD", "total": 20000 },
+    "valueProps": ["20% off", "Free shipping", "Free gift wrap", "Delivery before Mother's Day"],
+    "landingPageUrl": "https://example.com/mothers-day-gift-sets",
+    "constraints": {
+      "brandTone": "Warm, premium, trustworthy",
+      "shippingCutoff": "Order by May 6 to arrive before Mother's Day"
+    }
+  },
+  "goal": {
+    "primaryObjective": "conversions",
+    "conversionAction": "purchase",
+    "kpiTargets": { "targetROAS": 3 }
+  },
+  "history": {
+    "summary": "Last holiday campaign: strong conversion rate on mobile but high CPC on generic gift keywords."
+  }
+}
+

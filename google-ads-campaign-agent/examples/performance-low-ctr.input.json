@@ -1,0 +1,52 @@
+{
+  "business": {
+    "campaignName": "Gift Sets - Always On",
+    "theme": "Evergreen",
+    "product": {
+      "name": "Skincare Gift Set",
+      "category": "Skincare",
+      "priceRange": { "currency": "USD", "min": 39, "max": 129 }
+    },
+    "market": { "country": "United States", "language": "en" },
+    "timeRange": { "startDate": "2026-03-15", "endDate": "2026-03-31" },
+    "budget": { "currency": "USD", "total": 12000 }
+  },
+  "goal": {
+    "primaryObjective": "conversions",
+    "conversionAction": "purchase",
+    "kpiTargets": { "targetCPA": 35 }
+  },
+  "currentSetup": {
+    "structureSummary": "1 Search campaign (broad match heavy), 1 PMax campaign. No remarketing. Few negatives.",
+    "adTypes": ["search", "pmax"],
+    "bidding": "Max Conversions",
+    "budgetAllocation": "Search ~70%, PMax ~30%",
+    "keywordThemes": ["gifts", "skincare", "beauty"],
+    "audienceSignals": ["In-market: Beauty"],
+    "negatives": []
+  },
+  "adsMetrics": {
+    "timeWindow": { "startDate": "2026-03-15", "endDate": "2026-03-31" },
+    "impressions": 520000,
+    "clicks": 2600,
+    "cost": 7800,
+    "ctr": 0.005,
+    "cpc": 3.0,
+    "conversions": 38,
+    "conversionRate": 0.0146,
+    "cpa": 205.26,
+    "revenue": 4200,
+    "roas": 0.54
+  },
+  "pageMetrics": {
+    "sessions": 2450,
+    "bounceRate": 0.62,
+    "avgTimeOnPageSeconds": 28,
+    "addToCart": 120,
+    "beginCheckout": 55,
+    "purchases": 34,
+    "purchaseRate": 0.0139,
+    "notes": "Mobile page speed feels slow; promo not visible above the fold."
+  }
+}
+

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/google-ads-campaign-agent/performance-input.schema.json",
+  "title": "PerformanceInput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["business", "goal", "adsMetrics"],
+  "properties": {
+    "business": { "$ref": "planning-input.schema.json#/$defs/business" },
+    "goal": { "$ref": "planning-input.schema.json#/$defs/goal" },
+    "currentSetup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "structureSummary": { "type": "string", "description": "Campaigns/ad groups/asset groups summary." },
+        "adTypes": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["search", "pmax", "display", "youtube", "shopping", "remarketing"] }
+        },
+        "bidding": { "type": "string", "description": "Bidding strategy summary, e.g. Max Conversions, tCPA, tROAS." },
+        "budgetAllocation": { "type": "string" },
+        "keywordThemes": { "type": "array", "items": { "type": "string" } },
+        "audienceSignals": { "type": "array", "items": { "type": "string" } },
+        "negatives": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "adsMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["impressions", "clicks", "cost"],
+      "properties": {
+        "timeWindow": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["startDate", "endDate"],
+          "properties": {
+            "startDate": { "type": "string", "format": "date" },
+            "endDate": { "type": "string", "format": "date" }
+          }
+        },
+        "impressions": { "type": "number", "minimum": 0 },
+        "clicks": { "type": "number", "minimum": 0 },
+        "cost": { "type": "number", "minimum": 0, "description": "Total spend in business.budget.currency." },
+        "ctr": { "type": "number", "minimum": 0, "description": "Click-through rate, 0-1 or 0-100 allowed." },
+        "cpc": { "type": "number", "minimum": 0 },
+        "conversions": { "type": "number", "minimum": 0 },
+        "conversionRate": { "type": "number", "minimum": 0 },
+        "cpa": { "type": "number", "minimum": 0 },
+        "revenue": { "type": "number", "minimum": 0 },
+        "roas": { "type": "number", "minimum": 0 }
+      }
+    },
+    "pageMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional: landing page / analytics metrics.",
+      "properties": {
+        "sessions": { "type": "number", "minimum": 0 },
+        "bounceRate": { "type": "number", "minimum": 0 },
+        "avgTimeOnPageSeconds": { "type": "number", "minimum": 0 },
+        "addToCart": { "type": "number", "minimum": 0 },
+        "beginCheckout": { "type": "number", "minimum": 0 },
+        "purchases": { "type": "number", "minimum": 0 },
+        "purchaseRate": { "type": "number", "minimum": 0 },
+        "notes": { "type": "string" }
+      }
+    },
+    "segments": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional: breakdowns (device, network, campaign, keyword theme) if available."
+    }
+  }
+}
+

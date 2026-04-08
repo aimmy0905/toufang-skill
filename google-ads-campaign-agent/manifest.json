@@ -1,0 +1,446 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GoogleAdsCampaignAgent",
+    "description": "Plan Google Ads campaigns and analyze performance for optimization. This skill provides structured strategy, creative suggestions, setup guidance, and prioritized optimization actions. It does not directly operate the Google Ads UI.",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://openclaw.local"
+    }
+  ],
+  "paths": {
+    "/api/v1/google-ads/planning": {
+      "post": {
+        "operationId": "GoogleAdsPlanning",
+        "description": "Generate GoalSummary, StrategyPlan, CreativePack, SetupGuide, and initial OptimizationActions from planning (pre-launch) inputs.",
+        "deprecated": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PlanningInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Structured campaign plan output.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AgentOutput" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/google-ads/performance": {
+      "post": {
+        "operationId": "GoogleAdsPerformanceAnalysis",
+        "description": "Analyze performance metrics (impression/click/conversion/economics/tracking) and produce prioritized OptimizationActions.",
+        "deprecated": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PerformanceInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Structured diagnostics and optimization output.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AgentOutput" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PlanningInput": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://openclaw.local/schemas/google-ads-campaign-agent/planning-input.schema.json",
+        "title": "PlanningInput",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["business", "goal"],
+        "properties": {
+          "business": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["campaignName", "theme", "product", "market", "timeRange", "budget"],
+            "properties": {
+              "campaignName": { "type": "string", "minLength": 1 },
+              "theme": { "type": "string", "minLength": 1, "description": "Activity theme, e.g. Mother's Day, Black Friday." },
+              "product": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "category", "priceRange"],
+                "properties": {
+                  "name": { "type": "string", "minLength": 1 },
+                  "category": { "type": "string", "minLength": 1 },
+                  "priceRange": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["currency", "min", "max"],
+                    "properties": {
+                      "currency": { "type": "string", "minLength": 3, "maxLength": 3, "description": "ISO currency code, e.g. USD." },
+                      "min": { "type": "number", "minimum": 0 },
+                      "max": { "type": "number", "minimum": 0 }
+                    }
+                  }
+                }
+              },
+              "market": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["country", "language"],
+                "properties": {
+                  "country": { "type": "string", "minLength": 2, "description": "Target country, e.g. United States." },
+                  "language": { "type": "string", "minLength": 2, "description": "Primary language, e.g. en." }
+                }
+              },
+              "timeRange": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["startDate", "endDate"],
+                "properties": {
+                  "startDate": { "type": "string", "format": "date" },
+                  "endDate": { "type": "string", "format": "date" }
+                }
+              },
+              "budget": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["currency", "total"],
+                "properties": {
+                  "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+                  "total": { "type": "number", "minimum": 0 },
+                  "dailyCap": { "type": "number", "minimum": 0 }
+                }
+              },
+              "valueProps": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "description": "Key selling points, e.g. 20% off, free shipping."
+              },
+              "landingPageUrl": { "type": "string", "format": "uri", "description": "Optional landing page URL." },
+              "constraints": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Any additional constraints: shipping cutoff, stock limits, brand tone, compliance notes."
+              }
+            }
+          },
+          "goal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["primaryObjective", "conversionAction"],
+            "properties": {
+              "primaryObjective": {
+                "type": "string",
+                "enum": ["brand_awareness", "traffic", "conversions", "remarketing"],
+                "description": "Main objective category."
+              },
+              "conversionAction": { "type": "string", "minLength": 1, "description": "What counts as success, e.g. purchase, lead, signup." },
+              "kpiTargets": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "targetCPA": { "type": "number", "minimum": 0 },
+                  "targetROAS": { "type": "number", "minimum": 0 },
+                  "targetConversions": { "type": "number", "minimum": 0 },
+                  "targetRevenue": { "type": "number", "minimum": 0 }
+                }
+              }
+            }
+          },
+          "currentSetup": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Optional: if user already has some setup.",
+            "properties": {
+              "adTypes": {
+                "type": "array",
+                "items": { "type": "string", "enum": ["search", "pmax", "display", "youtube", "shopping", "remarketing"] }
+              },
+              "notes": { "type": "string" }
+            }
+          },
+          "history": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Optional: previous learnings or historical results summary (not raw account export).",
+            "properties": {
+              "summary": { "type": "string" },
+              "bestKeywords": { "type": "array", "items": { "type": "string" } },
+              "topMarkets": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      },
+      "PerformanceInput": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://openclaw.local/schemas/google-ads-campaign-agent/performance-input.schema.json",
+        "title": "PerformanceInput",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["business", "goal", "adsMetrics"],
+        "properties": {
+          "business": { "$ref": "#/components/schemas/PlanningInput/properties/business" },
+          "goal": { "$ref": "#/components/schemas/PlanningInput/properties/goal" },
+          "currentSetup": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "structureSummary": { "type": "string", "description": "Campaigns/ad groups/asset groups summary." },
+              "adTypes": {
+                "type": "array",
+                "items": { "type": "string", "enum": ["search", "pmax", "display", "youtube", "shopping", "remarketing"] }
+              },
+              "bidding": { "type": "string", "description": "Bidding strategy summary, e.g. Max Conversions, tCPA, tROAS." },
+              "budgetAllocation": { "type": "string" },
+              "keywordThemes": { "type": "array", "items": { "type": "string" } },
+              "audienceSignals": { "type": "array", "items": { "type": "string" } },
+              "negatives": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "adsMetrics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["impressions", "clicks", "cost"],
+            "properties": {
+              "timeWindow": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["startDate", "endDate"],
+                "properties": {
+                  "startDate": { "type": "string", "format": "date" },
+                  "endDate": { "type": "string", "format": "date" }
+                }
+              },
+              "impressions": { "type": "number", "minimum": 0 },
+              "clicks": { "type": "number", "minimum": 0 },
+              "cost": { "type": "number", "minimum": 0, "description": "Total spend in business.budget.currency." },
+              "ctr": { "type": "number", "minimum": 0, "description": "Click-through rate, 0-1 or 0-100 allowed." },
+              "cpc": { "type": "number", "minimum": 0 },
+              "conversions": { "type": "number", "minimum": 0 },
+              "conversionRate": { "type": "number", "minimum": 0 },
+              "cpa": { "type": "number", "minimum": 0 },
+              "revenue": { "type": "number", "minimum": 0 },
+              "roas": { "type": "number", "minimum": 0 }
+            }
+          },
+          "pageMetrics": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Optional: landing page / analytics metrics.",
+            "properties": {
+              "sessions": { "type": "number", "minimum": 0 },
+              "bounceRate": { "type": "number", "minimum": 0 },
+              "avgTimeOnPageSeconds": { "type": "number", "minimum": 0 },
+              "addToCart": { "type": "number", "minimum": 0 },
+              "beginCheckout": { "type": "number", "minimum": 0 },
+              "purchases": { "type": "number", "minimum": 0 },
+              "purchaseRate": { "type": "number", "minimum": 0 },
+              "notes": { "type": "string" }
+            }
+          },
+          "segments": { "type": "object", "additionalProperties": true, "description": "Optional: breakdowns (device, network, campaign, keyword theme) if available." }
+        }
+      },
+      "AgentOutput": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://openclaw.local/schemas/google-ads-campaign-agent/agent-output.schema.json",
+        "title": "GoogleAdsCampaignAgentOutput",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["goalSummary", "strategyPlan", "creativePack", "setupGuide", "optimizationActions"],
+        "properties": {
+          "goalSummary": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["oneLine", "context", "priorities"],
+            "properties": {
+              "oneLine": { "type": "string", "minLength": 1 },
+              "context": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["market", "timeRange", "budget"],
+                "properties": {
+                  "market": { "type": "string", "minLength": 1 },
+                  "timeRange": { "type": "string", "minLength": 1 },
+                  "budget": { "type": "string", "minLength": 1 }
+                }
+              },
+              "priorities": { "type": "array", "minItems": 1, "items": { "type": "string", "enum": ["impressions", "clicks", "conversions", "roas"] } },
+              "assumptions": { "type": "array", "items": { "type": "string" } },
+              "openQuestions": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "strategyPlan": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["recommendedMix", "budgetAllocation", "flightPlan", "keywordDirections", "audienceDirections", "notes"],
+            "properties": {
+              "recommendedMix": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["channel", "why", "when"],
+                  "properties": {
+                    "channel": { "type": "string", "enum": ["search", "pmax", "display", "youtube", "shopping", "remarketing"] },
+                    "why": { "type": "string", "minLength": 1 },
+                    "when": { "type": "string", "minLength": 1 }
+                  }
+                }
+              },
+              "budgetAllocation": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["channel", "percentage", "ruleOfThumb"],
+                  "properties": {
+                    "channel": { "type": "string" },
+                    "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+                    "ruleOfThumb": { "type": "string" }
+                  }
+                }
+              },
+              "flightPlan": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["phase", "dateRange", "goal", "actions"],
+                  "properties": {
+                    "phase": { "type": "string", "enum": ["warmup", "peak", "final_push"] },
+                    "dateRange": { "type": "string", "minLength": 1 },
+                    "goal": { "type": "string", "minLength": 1 },
+                    "actions": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              },
+              "keywordDirections": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["themes", "examples", "negativesToConsider"],
+                "properties": {
+                  "themes": { "type": "array", "items": { "type": "string" } },
+                  "examples": { "type": "array", "items": { "type": "string" } },
+                  "negativesToConsider": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "audienceDirections": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["who", "signals", "remarketingWindows"],
+                "properties": {
+                  "who": { "type": "array", "items": { "type": "string" } },
+                  "signals": { "type": "array", "items": { "type": "string" } },
+                  "remarketingWindows": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "notes": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "creativePack": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sellingPoints", "ctaOptions", "searchAds"],
+            "properties": {
+              "sellingPoints": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "ctaOptions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "searchAds": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["headlines", "descriptions"],
+                "properties": {
+                  "headlines": { "type": "array", "minItems": 5, "items": { "type": "string" } },
+                  "descriptions": { "type": "array", "minItems": 3, "items": { "type": "string" } }
+                }
+              },
+              "assetDirections": { "type": "array", "items": { "type": "string" } },
+              "landingPageSuggestions": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "setupGuide": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["campaignStructure", "namingRules", "biddingAndBudget", "trackingChecklist"],
+            "properties": {
+              "campaignStructure": { "type": "array", "items": { "type": "string" } },
+              "namingRules": { "type": "array", "items": { "type": "string" } },
+              "biddingAndBudget": { "type": "array", "items": { "type": "string" } },
+              "trackingChecklist": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "diagnostics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["problemType", "signals", "hypotheses"],
+            "properties": {
+              "problemType": { "type": "array", "minItems": 1, "items": { "type": "string", "enum": ["impression", "click", "conversion", "economics", "tracking"] } },
+              "signals": { "type": "array", "items": { "type": "string" } },
+              "hypotheses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["cause", "whyLikely", "howToVerify"],
+                  "properties": {
+                    "cause": { "type": "string" },
+                    "whyLikely": { "type": "string" },
+                    "howToVerify": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              }
+            }
+          },
+          "optimizationActions": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["priority", "action", "expectedImpact", "howToValidate"],
+              "properties": {
+                "priority": { "type": "string", "enum": ["P0", "P1", "P2"] },
+                "action": { "type": "string", "minLength": 1 },
+                "expectedImpact": { "type": "string", "minLength": 1 },
+                "howToValidate": { "type": "array", "items": { "type": "string" } },
+                "ownerHint": { "type": "string", "enum": ["ads", "landing_page", "analytics", "creative"], "description": "Who should do it." }
+              }
+            }
+          },
+          "warnings": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  },
+  "x-openclaw": {
+    "name": "google-ads-campaign-agent",
+    "displayName": "Google Ads Campaign Agent",
+    "prompts": {
+      "system": "prompts/system.md",
+      "planning": "prompts/planning.md",
+      "setup": "prompts/setup.md",
+      "analysis": "prompts/analysis.md"
+    },
+    "examples": [
+      "examples/mothers-day.input.json",
+      "examples/mothers-day.output.json"
+    ]
+  }
+}
+
