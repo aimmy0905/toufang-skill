@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>广告投放助手管理台</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell admin-shell">
+      <aside class="primary-rail" aria-label="全局导航">
+        <div class="rail-top">
+          <div class="rail-avatar">C</div>
+          <div class="rail-divider"></div>
+          <a class="rail-link" href="./index.html" title="对话工作台" aria-label="对话工作台">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="7" width="14" height="10" rx="2"></rect>
+                <path d="M9 7V5h6v2"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+            </span>
+          </a>
+          <a class="rail-link active" href="./admin.html" title="管理后台" aria-label="管理后台">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+              </svg>
+            </span>
+          </a>
+          <button class="rail-link" type="button" title="创意生成" aria-label="创意生成">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3l1.8 4.8L19 9.5l-4 2.7 1.3 4.8L12 14.5 7.7 17l1.3-4.8-4-2.7 5.2-1.7L12 3z"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="rail-link" type="button" title="刷新" aria-label="刷新">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 11a8 8 0 10-2.3 5.6"></path>
+                <path d="M20 4v7h-7"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="rail-link" type="button" title="设置" aria-label="设置">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19 12a7 7 0 00-.1-1l2-1.5-2-3.5-2.4 1a7 7 0 00-1.7-1l-.3-2.6h-4l-.3 2.6a7 7 0 00-1.7 1l-2.4-1-2 3.5 2 1.5a7 7 0 000 2l-2 1.5 2 3.5 2.4-1a7 7 0 001.7 1l.3 2.6h4l.3-2.6a7 7 0 001.7-1l2.4 1 2-3.5-2-1.5c.1-.3.1-.7.1-1z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="rail-bottom">
+          <div class="rail-badge">13</div>
+          <button class="rail-link" type="button" title="夜间模式" aria-label="夜间模式">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 14.5A8.5 8.5 0 119.5 4 6.5 6.5 0 0020 14.5z"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="rail-link" type="button" title="退出" aria-label="退出">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10 17l5-5-5-5"></path>
+                <path d="M15 12H4"></path>
+                <path d="M20 20H12"></path>
+                <path d="M20 4H12"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </aside>
+
+      <aside class="sidebar admin-sidebar">
+        <div class="brand-card">
+          <div>
+            <p class="eyebrow">Console</p>
+            <h1>投放管理台</h1>
+          </div>
+          <button class="model-chip" type="button">运营中</button>
+        </div>
+
+        <section class="admin-filter-card">
+          <div class="panel-header">
+            <h2>账户概况</h2>
+            <span>实时演示</span>
+          </div>
+          <div class="mini-stat-list">
+            <div class="mini-stat">
+              <span>当前会员</span>
+              <strong id="admin-plan">专业版</strong>
+            </div>
+            <div class="mini-stat">
+              <span>当前知识库</span>
+              <strong id="admin-knowledge">Meta 广告规范</strong>
+            </div>
+            <div class="mini-stat">
+              <span>对话总数</span>
+              <strong id="admin-chat-count">1 条</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-filter-card">
+          <div class="panel-header">
+            <h2>活动筛选</h2>
+            <span>纯前端交互</span>
+          </div>
+          <div class="campaign-tabs">
+            <button class="campaign-tab active" data-filter="all" type="button">全部</button>
+            <button class="campaign-tab" data-filter="running" type="button">投放中</button>
+            <button class="campaign-tab" data-filter="warning" type="button">待优化</button>
+            <button class="campaign-tab" data-filter="paused" type="button">已暂停</button>
+          </div>
+        </section>
+
+        <section class="admin-filter-card">
+          <div class="panel-header">
+            <h2>最近动作</h2>
+            <span>时间线</span>
+          </div>
+          <div class="timeline-list">
+            <div class="timeline-item">
+              <strong>09:30</strong>
+              <span>护肤礼盒活动自动生成周报</span>
+            </div>
+            <div class="timeline-item">
+              <strong>10:10</strong>
+              <span>户外帐篷广告 CTR 低于阈值</span>
+            </div>
+            <div class="timeline-item">
+              <strong>11:25</strong>
+              <span>母亲节素材包进入发布校验</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <main class="admin-stage">
+        <section class="dashboard-grid">
+          <div class="dashboard-card banner-card">
+            <div class="banner-top">
+              <div>
+                <p class="eyebrow">Overview</p>
+                <h2>正在投放的广告活动</h2>
+              </div>
+              <div class="status-pill">
+                <span class="status-dot"></span>
+                自动监测已开启
+              </div>
+            </div>
+            <div class="highlight-row">
+              <div class="highlight-item">
+                <span>活动数</span>
+                <strong id="campaign-total">4</strong>
+              </div>
+              <div class="highlight-item">
+                <span>总花费</span>
+                <strong>$12,840</strong>
+              </div>
+              <div class="highlight-item">
+                <span>总转化</span>
+                <strong>186</strong>
+              </div>
+              <div class="highlight-item">
+                <span>平均 ROAS</span>
+                <strong>2.84</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card metric-card">
+            <p class="eyebrow">Marketing</p>
+            <h3>营销数据</h3>
+            <div class="metric-main">48,200</div>
+            <span class="metric-label">站内会话</span>
+            <div class="metric-trend positive">较昨日 +12.6%</div>
+          </div>
+
+          <div class="dashboard-card metric-card">
+            <p class="eyebrow">Ads</p>
+            <h3>投放数据</h3>
+            <div class="metric-main">1.92%</div>
+            <span class="metric-label">平均 CTR</span>
+            <div class="metric-trend negative">2 个活动低于预期</div>
+          </div>
+
+          <div class="dashboard-card metric-card">
+            <p class="eyebrow">Revenue</p>
+            <h3>营销收入</h3>
+            <div class="metric-main">$36,400</div>
+            <span class="metric-label">归因收入</span>
+            <div class="metric-trend positive">高意图词包贡献 43%</div>
+          </div>
+
+          <div class="dashboard-card chart-card">
+            <div class="panel-header">
+              <h2>活动表现</h2>
+              <span>最近 7 天</span>
+            </div>
+            <div class="bar-chart" aria-label="活动表现图">
+              <div class="bar-group"><span>Mon</span><div class="bar-track"><i style="height: 48%"></i></div></div>
+              <div class="bar-group"><span>Tue</span><div class="bar-track"><i style="height: 72%"></i></div></div>
+              <div class="bar-group"><span>Wed</span><div class="bar-track"><i style="height: 65%"></i></div></div>
+              <div class="bar-group"><span>Thu</span><div class="bar-track"><i style="height: 85%"></i></div></div>
+              <div class="bar-group"><span>Fri</span><div class="bar-track"><i style="height: 90%"></i></div></div>
+              <div class="bar-group"><span>Sat</span><div class="bar-track"><i style="height: 58%"></i></div></div>
+              <div class="bar-group"><span>Sun</span><div class="bar-track"><i style="height: 76%"></i></div></div>
+            </div>
+          </div>
+
+          <div class="dashboard-card table-card">
+            <div class="panel-header">
+              <h2>活动列表</h2>
+              <span id="campaign-filter-label">全部活动</span>
+            </div>
+            <div class="campaign-list" id="campaign-list"></div>
+          </div>
+
+          <div class="dashboard-card history-card">
+            <div class="panel-header">
+              <h2>对话历史</h2>
+              <span id="history-meta">来自对话页</span>
+            </div>
+            <div class="history-list" id="history-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>

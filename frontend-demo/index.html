@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>广告投放助手 Demo</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="primary-rail" aria-label="全局导航">
+        <div class="rail-top">
+          <div class="rail-avatar">C</div>
+          <div class="rail-divider"></div>
+          <a class="rail-link active" href="./index.html" title="对话工作台" aria-label="对话工作台">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="5" y="7" width="14" height="10" rx="2"></rect>
+                <path d="M9 7V5h6v2"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+            </span>
+          </a>
+          <a class="rail-link" href="./admin.html" title="管理后台" aria-label="管理后台">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+              </svg>
+            </span>
+          </a>
+          <button class="rail-link" type="button" title="创意生成" aria-label="创意生成">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3l1.8 4.8L19 9.5l-4 2.7 1.3 4.8L12 14.5 7.7 17l1.3-4.8-4-2.7 5.2-1.7L12 3z"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="rail-link" type="button" title="刷新" aria-label="刷新">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 11a8 8 0 10-2.3 5.6"></path>
+                <path d="M20 4v7h-7"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="rail-link" type="button" title="设置" aria-label="设置">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19 12a7 7 0 00-.1-1l2-1.5-2-3.5-2.4 1a7 7 0 00-1.7-1l-.3-2.6h-4l-.3 2.6a7 7 0 00-1.7 1l-2.4-1-2 3.5 2 1.5a7 7 0 000 2l-2 1.5 2 3.5 2.4-1a7 7 0 001.7 1l.3 2.6h4l.3-2.6a7 7 0 001.7-1l2.4 1 2-3.5-2-1.5c.1-.3.1-.7.1-1z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="rail-bottom">
+          <div class="rail-badge">13</div>
+          <button class="rail-link" type="button" title="夜间模式" aria-label="夜间模式">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 14.5A8.5 8.5 0 119.5 4 6.5 6.5 0 0020 14.5z"></path>
+              </svg>
+            </span>
+          </button>
+          <button class="rail-link" type="button" title="退出" aria-label="退出">
+            <span class="rail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10 17l5-5-5-5"></path>
+                <path d="M15 12H4"></path>
+                <path d="M20 20H12"></path>
+                <path d="M20 4H12"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </aside>
+
+      <aside class="sidebar">
+        <div class="brand-card">
+          <div>
+            <p class="eyebrow">Workspace</p>
+            <h1>广告投放助手</h1>
+          </div>
+          <button class="model-chip" type="button">GPT-4.1</button>
+        </div>
+
+        <nav class="main-nav" aria-label="主导航">
+          <button class="nav-item active" data-panel="name-panel" type="button">名称</button>
+          <button class="nav-item" data-panel="skill-panel" type="button">技能</button>
+          <button class="nav-item" data-panel="knowledge-panel" type="button">知识库</button>
+          <button class="nav-item" data-panel="member-panel" type="button">会员</button>
+        </nav>
+
+        <section class="panel-stack">
+          <div class="panel active" id="name-panel">
+            <div class="panel-header">
+              <h2>名称设置</h2>
+              <span>品牌人格</span>
+            </div>
+            <label class="field">
+              <span>助手名称</span>
+              <input id="assistant-name" type="text" value="广告投放流程" />
+            </label>
+            <label class="field">
+              <span>欢迎语</span>
+              <textarea id="welcome-copy" rows="4">帮你完成广告策略、素材生成、发布检查和投后优化。</textarea>
+            </label>
+            <div class="mini-card">
+              <p>预览状态</p>
+              <strong id="name-preview">广告投放流程</strong>
+              <span id="copy-preview">帮你完成广告策略、素材生成、发布检查和投后优化。</span>
+            </div>
+          </div>
+
+          <div class="panel" id="skill-panel">
+            <div class="panel-header">
+              <h2>技能配置</h2>
+              <span>可交互切换</span>
+            </div>
+            <div class="skill-list">
+              <label class="toggle-row">
+                <input type="checkbox" checked data-skill="Google 搜索" />
+                <span class="toggle-mark"></span>
+                <span>Google 搜索</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" checked data-skill="图片搜索" />
+                <span class="toggle-mark"></span>
+                <span>图片搜索</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" checked data-skill="节日信息" />
+                <span class="toggle-mark"></span>
+                <span>节日信息</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" data-skill="ROI 估算" />
+                <span class="toggle-mark"></span>
+                <span>ROI 估算</span>
+              </label>
+            </div>
+            <div class="tag-box" id="enabled-skills"></div>
+          </div>
+
+          <div class="panel" id="knowledge-panel">
+            <div class="panel-header">
+              <h2>知识库</h2>
+              <span>静态演示</span>
+            </div>
+            <label class="upload-card" for="knowledge-upload">
+              <input
+                id="knowledge-upload"
+                type="file"
+                accept=".txt,.md,.json,.csv,.pdf,.doc,.docx"
+                multiple
+                hidden
+              />
+              <strong>上传知识库内容</strong>
+              <span>支持 txt、md、json、csv、pdf、doc、docx，仅做前端演示，不会真实入库。</span>
+            </label>
+            <div class="knowledge-list">
+              <button class="knowledge-item active" type="button">Meta 广告规范</button>
+              <button class="knowledge-item" type="button">Google Ads 节日投放</button>
+              <button class="knowledge-item" type="button">北美户外品类词库</button>
+            </div>
+            <div class="upload-list-wrap">
+              <div class="panel-header">
+                <h2>已上传内容</h2>
+                <span id="upload-count">0 个文件</span>
+              </div>
+              <div class="upload-list" id="upload-list">
+                <p class="upload-empty">还没有上传文件，可以添加品牌资料、节日规划或产品卖点文档。</p>
+              </div>
+            </div>
+            <div class="mini-card">
+              <p>当前挂载</p>
+              <strong id="knowledge-preview">Meta 广告规范</strong>
+              <span>用于回答文案合规、投放规则和平台差异问题。</span>
+            </div>
+          </div>
+
+          <div class="panel" id="member-panel">
+            <div class="panel-header">
+              <h2>会员等级</h2>
+              <span>套餐演示</span>
+            </div>
+            <div class="membership-grid">
+              <button class="membership-card active" data-plan="专业版" type="button">
+                <strong>专业版</strong>
+                <span>多技能联动</span>
+              </button>
+              <button class="membership-card" data-plan="团队版" type="button">
+                <strong>团队版</strong>
+                <span>知识库协作</span>
+              </button>
+              <button class="membership-card" data-plan="企业版" type="button">
+                <strong>企业版</strong>
+                <span>自动化发布</span>
+              </button>
+            </div>
+            <div class="mini-card accent">
+              <p>当前套餐</p>
+              <strong id="plan-preview">专业版</strong>
+              <span>支持基础工作流、聊天交互和策略建议。</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <main class="chat-stage">
+        <div class="chat-card">
+          <header class="chat-header">
+            <div>
+              <p class="eyebrow">预览</p>
+              <h2 id="chat-title">广告投放流程</h2>
+            </div>
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              在线预览
+            </div>
+          </header>
+
+          <section class="hero-card" id="hero-card">
+            <div class="hero-icon">AI</div>
+            <h3 id="hero-title">广告投放流程</h3>
+            <p id="hero-copy">帮你完成广告策略、素材生成、发布检查和投后优化。</p>
+            <div class="suggestions">
+              <button class="suggestion-chip" type="button">写 3 条英文广告文案</button>
+              <button class="suggestion-chip" type="button">分析为什么 CTR 很低</button>
+              <button class="suggestion-chip" type="button">规划母亲节投放节奏</button>
+            </div>
+          </section>
+
+          <section class="messages" id="messages" aria-live="polite"></section>
+
+          <form class="composer" id="chat-form">
+            <div class="composer-toolbar">
+              <div class="toolbar-left">
+                <button class="tool-btn" type="button" id="clear-chat">清空对话</button>
+                <button class="tool-btn" type="button" id="demo-reply">生成示例回复</button>
+              </div>
+              <div class="toolbar-right">
+                <span id="active-knowledge">知识库: Meta 广告规范</span>
+              </div>
+            </div>
+            <label class="composer-field">
+              <textarea
+                id="chat-input"
+                rows="3"
+                placeholder="问我任何广告投放、文案、优化或预算问题..."
+              ></textarea>
+            </label>
+            <div class="composer-footer">
+              <div class="footer-meta">
+                <span id="skill-count">已启用 3 个技能</span>
+                <span id="member-badge">专业版</span>
+              </div>
+              <button class="send-btn" type="submit">发送</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
