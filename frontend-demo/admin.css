@@ -1,0 +1,99 @@
+body {
+  overflow-x: hidden;
+}
+
+.admin-shell {
+  display: grid !important;
+  grid-template-columns: 88px 320px minmax(0, 1fr) !important;
+  grid-template-areas: "rail sidebar main" !important;
+  align-items: start !important;
+}
+
+.admin-shell > .primary-rail {
+  grid-area: rail !important;
+  position: sticky;
+  top: 24px;
+  height: calc(100vh - 48px);
+}
+
+.admin-shell > .admin-sidebar {
+  grid-area: sidebar !important;
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+.admin-shell > .admin-stage {
+  grid-area: main !important;
+  min-width: 0;
+  width: 100%;
+  align-self: start;
+}
+
+.admin-stage .dashboard-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+
+.admin-stage .banner-card {
+  grid-column: 1 / -1 !important;
+}
+
+.admin-stage .metric-card {
+  grid-column: span 4 !important;
+}
+
+.admin-stage .chart-card,
+.admin-stage .table-card,
+.admin-stage .history-card {
+  grid-column: span 6 !important;
+}
+
+.admin-stage .dashboard-card,
+.admin-stage .campaign-row,
+.admin-stage .history-item,
+.admin-stage .campaign-main,
+.admin-stage .history-main {
+  min-width: 0;
+}
+
+.admin-stage .campaign-main strong,
+.admin-stage .history-main strong,
+.admin-stage .campaign-meta,
+.admin-stage .history-sub {
+  word-break: break-word;
+}
+
+.primary-rail .rail-icon svg,
+.primary-rail .rail-icon svg * {
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+@media (max-width: 1080px) {
+  .admin-shell {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "rail"
+      "sidebar"
+      "main" !important;
+  }
+
+  .admin-shell > .primary-rail,
+  .admin-shell > .admin-sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .admin-stage .metric-card,
+  .admin-stage .chart-card,
+  .admin-stage .table-card,
+  .admin-stage .history-card {
+    grid-column: 1 / -1 !important;
+  }
+}
